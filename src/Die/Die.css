@@ -1,0 +1,9 @@
+.die {
+    font-size: 64px;
+    background: white;
+    border: none;
+}
+
+.die:focus {
+    outline: none;
+}

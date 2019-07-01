@@ -1,0 +1,13 @@
+td {
+    width: 64px;
+    height: 64px;
+}
+
+td.active {
+    border: 1px solid black;
+}
+
+td.car {
+    background: url('../assets/icons8-car-64.png')
+
+}
