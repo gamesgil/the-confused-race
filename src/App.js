@@ -8,18 +8,20 @@ import game from './game'
 function App() {
   const race = game()
 
+  let dieRef = React.createRef()
   let boardRef = React.createRef()
 
   return (
     <div className="App">
-      <Board ref={boardRef}></Board>
+      <Board ref={boardRef} action={_ => dieRef.current.ready()}></Board>
 
-      <Die action={val => {
+      <Die ref={dieRef} action={val => {
         race.setDieValue(val + 1)
+        
         boardRef.current.hilite(val + 1)
-      }}></Die>
 
-      <button onClick={_ => boardRef.current.moveToNext()}>Next</button>
+        dieRef.current.busy()
+      }}></Die>
     </div>
 
 

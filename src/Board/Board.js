@@ -32,7 +32,7 @@ class Board extends Component {
     this.setState((state, props) => {
       const hilite = [];
 
-      if (state.playerPos + posFromCurrent < state.path.length - 1) {
+      if (state.playerPos + posFromCurrent < state.path.length) {
         hilite.push(state.playerPos + posFromCurrent);
       }
 
@@ -55,6 +55,7 @@ class Board extends Component {
           this.moveTo(pos)
 
           this.setState({hilite: []})
+          this.props.action()
       }
   }
 
