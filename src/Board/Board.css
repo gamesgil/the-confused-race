@@ -11,3 +11,7 @@ td.car {
     background: url('../assets/icons8-car-64.png')
 
 }
+
+td.hilite {
+    background: green;
+}
