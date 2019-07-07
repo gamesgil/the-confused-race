@@ -5,11 +5,15 @@ import Board from './Board/Board'
 import Die from './Die/Die'
 
 function App() {
+  let boardRef = React.createRef()
+
   return (
     <div className="App">
-      <Board></Board>
+      <Board ref={boardRef}></Board>
 
       <Die></Die>
+
+      <button onClick={_ => boardRef.current.moveToNext()}>Next</button>
     </div>
 
 

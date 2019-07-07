@@ -3,25 +3,33 @@ import { Component } from 'react';
 import './Board.css'
 
 class Board extends Component {
-    state = {rows: 5, cols: 5, car: [0, 4]}
+    state = {
+        boardSize: [5, 5],
+        path: [
+            [0, 4], [0, 3], [0, 2], [0, 1], [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [4, 1], [4, 2], [4, 3], [4, 4]
+        ], 
+        playerPos: 0
+    }
 
     constructor(props) {
         super(props)
     }
 
+    moveToNext() {
+        this.setState({playerPos: this.state.playerPos < this.state.path.length - 1 ? this.state.playerPos + 1 : this.state.playerPos - 1})
+    }
+
     render() {
-        let board = ['11111', '10001', '10001', '10001', '10001']
-        
-        const rows = board.map((row, y) => {
+        const rows = Array(this.state.boardSize[1]).fill(0).map((row, y) => {
             return (<tr key={y}>
-                {row.split('').map((tile, x) => {
+                {Array(this.state.boardSize[0]).fill(0).map((tile, x) => {
                     const key = `${x},${y}`
                     const classes = []
 
-                    if (tile === '1') {
+                    if (this.state.path.find(val => val[0] === x && val[1] === y)) {
                         classes.push('active')
 
-                        if (this.state.car[0] === x && this.state.car[1] === y) {
+                        if (this.state.path[this.state.playerPos][0] === x && this.state.path[this.state.playerPos][1] === y) {
                             classes.push('car')
                         }
                     }
